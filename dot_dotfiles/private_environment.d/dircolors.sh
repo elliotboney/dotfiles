@@ -2,7 +2,7 @@ load_eza_colors() {
     local COLORS_FILE="${HOME}/.dotfiles/environment.d/ezacolors"
     local SCRIPT_PATH="${HOME}/.bin/eza-colors-converter.sh"
     if [ -f "$COLORS_FILE" ] && [ -f "$SCRIPT_PATH" ]; then
-        EZA_COLORS=$("$SCRIPT_PATH" "$COLORS_FILE" 2>/dev/null | tr -d '"')
+        EZA_COLORS=$(BASH_ENV= "$SCRIPT_PATH" "$COLORS_FILE" 2>/dev/null | tr -d '"')
         if [ $? -eq 0 ] && [ -n "$EZA_COLORS" ]; then
             export EZA_COLORS
         fi
